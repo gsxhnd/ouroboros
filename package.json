@@ -1,8 +1,15 @@
 {
   "name": "ouroboros",
   "version": "0.0.1",
-  "main": "index.js",
+  "main": "./dist/index.js",
   "repository": "git@github.com:gsxhnd/ouroboros.git",
   "author": "gsxhnd <gsxhnd@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "start": "electron ."
+  },
+  "devDependencies": {
+    "electron": "^13.1.8",
+    "typescript": "^4.3.5"
+  }
 }
