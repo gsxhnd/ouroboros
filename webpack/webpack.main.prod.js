@@ -1,18 +1,17 @@
 const path = require("path");
-const merge = require("webpack-merge");
-const webpack = require("webpack");
-const webpackDevConfig = require("./webpack.main.dev.config");
+const baseConfig = require("./webpack.base.js");
+const webpackMerge = require("webpack-merge");
+const nodeExternals = require("webpack-node-externals");
 
-module.exports = merge.smart(webpackDevConfig, {
-  devtool: "none",
-  mode: "production", // 生产模式
+const mainProdConfig = {
+  mode: "production",
+  entry: path.resolve(__dirname, "../app/main/electron.ts"),
+  target: "electron-main",
   output: {
-    path: path.join(__dirname, "dist/main"),
-    filename: "main.prod.js", // 生产模式文件名为main.prod.js
+    filename: "electron.prod.js",
+    path: path.resolve(__dirname, "../dist/main"),
   },
-  plugins: [
-    new webpack.EnvironmentPlugin({
-      NODE_ENV: "production",
-    }),
-  ],
-});
+  externals: [nodeExternals()],
+};
+
+module.exports = webpackMerge.merge(mainProdConfig);
