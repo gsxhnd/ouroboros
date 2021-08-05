@@ -9,25 +9,35 @@
   "scripts": {
     "start:main": "webpack --config ./webpack/webpack.main.dev.js && electron ./dist/main/electron.js",
     "build:main": "webpack --config ./webpack/webpack.main.prod.js",
-    "start:render": "NODE_ENV=development webpack serve --config ./webpack/webpack.render.dev.js --open",
-    "build:render": "NODE_ENV=production webpack --config ./webpack/webpack.render.prod.js",
-    "package:mac": "electron-builder build --mac"
+    "start:render": "webpack serve --config ./webpack/webpack.render.dev.js --open",
+    "build:render": "webpack --config ./webpack/webpack.render.prod.js",
+    "package:mac": "electron-builder build --mac",
+    "package:win": "electron-builder build --win"
   },
   "build": {
-    "productName": "Electron App",
-    "appId": "electron.app",
-    "asar": true,
+    "productName": "Ouroboros",
+    "appId": "xyz.gsxhnd.ouroboros",
+    "asar": false,
     "files": [
       "dist"
     ],
     "extends": null,
+    "win": {
+      "target": [
+        {
+          "target": "dir",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
+    },
+    "linux": {
+      "target": "AppImage"
+    },
     "mac": {
       "category": "public.app-category.developer-tools",
-      "target": "dmg"
-    },
-    "dmg": {
-      "backgroundColor": "#ffffff",
-      "title": "Electron App"
+      "target": "dir"
     },
     "directories": {
       "output": "release"
@@ -61,5 +71,8 @@
     "webpack-dev-server": "^3.11.2",
     "webpack-merge": "^5.8.0",
     "webpack-node-externals": "^3.0.0"
+  },
+  "dependencies": {
+    "electron-store": "^8.0.0"
   }
 }
