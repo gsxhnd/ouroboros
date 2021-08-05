@@ -5,7 +5,7 @@ function createWindow() {
   console.log(process.versions.chrome);
   console.log(process.versions.electron);
 
-  win.loadFile("index.html");
+  win.loadFile("../renderer/index.html");
 }
 
 app.on("ready", createWindow);
