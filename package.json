@@ -16,10 +16,9 @@
   "build": {
     "productName": "Electron App",
     "appId": "electron.app",
+    "asar": true,
     "files": [
-      "dist/",
-      "resources/",
-      "package.json"
+      "dist"
     ],
     "extends": null,
     "mac": {
