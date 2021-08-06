@@ -1,23 +1,33 @@
 import { app, BrowserWindow } from "electron";
-import ElectronStore from "electron-store";
 import path from "path";
-
-let store = new ElectronStore();
+import { store } from "./store";
 
 function createWindow() {
-  store.set("dev_mode", app.isPackaged ? false : true);
-  store.set("lib_list", ["a", "n"]);
-  console.log(app.isPackaged);
-  console.log(app.getLocale());
-  console.log(app.getPath("userData"));
-  let win = new BrowserWindow({ width: 600, height: 800, frame: false });
+  let winSize: any;
+  winSize = store.get("win.size", {
+    x: 0,
+    y: 25,
+    width: 600,
+    height: 800,
+  });
+
+  let win = new BrowserWindow({
+    x: winSize.x,
+    y: winSize.y,
+    width: winSize.width,
+    height: winSize.height,
+    minHeight: 600,
+    minWidth: 600,
+    frame: false,
+    titleBarStyle: "hidden",
+  });
+
+  win.on("resized", () => {
+    let size = win.getContentBounds();
+    store.set("win.size", size);
+  });
   win.loadFile(path.join(__dirname, "../renderer/index.html"));
 }
 
-function loadConfig() {
-  let language = store.get("language");
-  console.log(language);
-}
-
-app.on("will-finish-launching", loadConfig);
+app.on("will-finish-launching", () => {});
 app.on("ready", createWindow);

@@ -15,4 +15,4 @@ const mainConfig = {
   mode: "development",
 };
 
-module.exports = webpackMerge.merge(mainConfig);
+module.exports = webpackMerge.merge(baseConfig, mainConfig);

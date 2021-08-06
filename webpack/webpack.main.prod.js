@@ -14,4 +14,4 @@ const mainProdConfig = {
   externals: [nodeExternals()],
 };
 
-module.exports = webpackMerge.merge(mainProdConfig);
+module.exports = webpackMerge.merge(baseConfig, mainProdConfig);
