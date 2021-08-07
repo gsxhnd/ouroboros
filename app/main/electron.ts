@@ -1,6 +1,7 @@
-import { app, BrowserWindow } from "electron";
+import { app, BrowserWindow, ipcMain, dialog } from "electron";
 import path from "path";
 import { store } from "./store";
+import "./ipc";
 
 function createWindow() {
   let winSize: any;
@@ -20,6 +21,10 @@ function createWindow() {
     minWidth: 600,
     frame: false,
     titleBarStyle: "hidden",
+    webPreferences: {
+      nodeIntegration: true,
+      contextIsolation: false,
+    },
   });
 
   win.on("resized", () => {

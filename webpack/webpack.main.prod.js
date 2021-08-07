@@ -11,7 +11,20 @@ const mainProdConfig = {
     filename: "electron.prod.js",
     path: path.resolve(__dirname, "../dist/main"),
   },
-  externals: [nodeExternals()],
+  // externals: [nodeExternals()],
+  optimization: {
+    splitChunks: {
+      chunks: "initial",
+      minChunks: 1,
+      cacheGroups: {
+        vendors: {
+          test: /[\\/]node_modules[\\/]/,
+          priority: -10,
+          filename: "[name]-bundle.js",
+        },
+      },
+    },
+  },
 };
 
 module.exports = webpackMerge.merge(baseConfig, mainProdConfig);
