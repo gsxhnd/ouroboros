@@ -31,6 +31,10 @@ const devConfig = {
         ],
       },
       {
+        test: /\.css$/,
+        use: ["style-loader", "css-loader"],
+      },
+      {
         test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
         use: {
           loader: "url-loader",

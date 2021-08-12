@@ -31,7 +31,12 @@ function createWindow() {
     let size = win.getContentBounds();
     store.set("win.size", size);
   });
-  win.loadFile(path.join(__dirname, "../renderer/index.html"));
+  if (app.isPackaged) {
+    win.loadFile(path.join(__dirname, "../renderer/index.html"));
+  } else {
+    process.env["ELECTRON_DISABLE_SECURITY_WARNINGS"] = "true";
+    win.loadURL("http://127.0.0.1:4000");
+  }
 }
 
 app.on("will-finish-launching", () => {});
