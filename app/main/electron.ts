@@ -8,7 +8,7 @@ function createWindow() {
   winSize = store.get("win.size", {
     x: 0,
     y: 25,
-    width: 600,
+    width: 800,
     height: 800,
   });
 

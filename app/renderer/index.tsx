@@ -1,33 +1,20 @@
-import React from 'react';
-import ReactDOM from 'react-dom'
+import React from "react";
+import ReactDOM from "react-dom";
 import "./index.less";
-import { PrimaryButton } from '@fluentui/react/lib/Button';
-import { ipcRenderer  } from "electron";
 
-import {Editor} from './components/editor'
-
+import { Editor } from "./components/editor";
+import { Nav } from "./components/nav";
+import { Explorer } from "./components/explorer";
 
 ReactDOM.render(
   <React.StrictMode>
-    <div className="App">
-      <header className="App-header">
-        <PrimaryButton text="Quit " onClick={quit} />
-        <PrimaryButton text="Select" onClick={show} />
-      </header>
-      <div>
+    <div className="app">
+      <Nav />
+      <div className="container">
+        <Explorer />
         <Editor />
       </div>
     </div>
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById("root")
 );
-
-
-
-function quit() {
-  ipcRenderer.sendSync("quit");
-}
-
-function show() {
-  ipcRenderer.sendSync("show-select-lib");
-}
