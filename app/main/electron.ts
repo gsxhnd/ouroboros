@@ -1,13 +1,19 @@
 import { app, BrowserWindow, ipcMain, dialog } from "electron";
 import path from "path";
 import { store } from "./db/store";
-import { libDB } from "./db/lowdb";
+// import { libDB } from "./db/lowdb";
 import { get_window } from "./window";
+import { Low, JSONFile } from "lowdb";
 
 import "./ipc";
 
 function createWindow() {
-  console.log("lib db: ", libDB);
+  let file = new JSONFile("./db.json");
+  let db = new Low(file);
+  db.read().then(() => {
+    console.log(db);
+  });
+
   let win = get_window();
   win.on("resized", () => {
     let size = win.getContentBounds();

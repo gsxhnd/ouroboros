@@ -2,6 +2,7 @@
   "name": "ouroboros",
   "version": "0.1.0",
   "main": "dist/main/electron.prod.js",
+  "type": "module",
   "repository": "git@github.com:gsxhnd/ouroboros.git",
   "author": "gsxhnd <gsxhnd@gmail.com>",
   "license": "MIT",
@@ -46,6 +47,7 @@
   },
   "devDependencies": {
     "@fluentui/react": "^8.26.2",
+    "@purtuga/esm-webpack-plugin": "^1.5.0",
     "@types/node": "^12.0.0",
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
