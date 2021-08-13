@@ -2,9 +2,10 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./index.less";
 
-import { Editor } from "./components/editor";
 import { Nav } from "./components/nav";
-import { Explorer } from "./components/explorer";
+import { ContainerEditor } from "./components/container_editor";
+import { ContainerExplorer } from "./components/container_explorer";
+import { ContainerInfo } from "./components/container_info";
 
 ReactDOM.render(
   <React.StrictMode>
@@ -12,7 +13,8 @@ ReactDOM.render(
       <Nav />
       <div className="container">
         <Explorer />
-        <Editor />
+        <ContainerEditor />
+        <ContainerInfo />
       </div>
     </div>
   </React.StrictMode>,

@@ -1,9 +1,9 @@
 import React from "react";
 import { editor } from "monaco-editor";
 
-import "./editor.less";
+import "./container_editor.less";
 
-class Editor extends React.Component {
+class ContainerEditor extends React.Component {
   constructor(props: React.ReactPropTypes) {
     super(props);
     this.state = { date: null };
@@ -28,4 +28,4 @@ class Editor extends React.Component {
   }
 }
 
-export { Editor };
+export { ContainerEditor };
