@@ -1,13 +1,12 @@
-import { app, BrowserWindow, ipcMain, dialog } from "electron";
+import { app } from "electron";
 import path from "path";
 import { store } from "./db/store";
-// import { libDB } from "./db/lowdb";
 import { get_window } from "./window";
 import { Low, JSONFile } from "lowdb";
 
 import "./ipc";
 
-function createWindow() {
+function createWindow(): void {
   let file = new JSONFile("./db.json");
   let db = new Low(file);
   db.read().then(() => {

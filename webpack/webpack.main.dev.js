@@ -6,10 +6,10 @@ export default {
   resolve: {
     extensions: [".js", ".jsx", ".ts", ".tsx"],
   },
-  entry: resolve(dirname(""), "app/main/electron.ts"),
+  entry: resolve(dirname(""), "app/main/index.ts"),
   target: "electron-main",
   output: {
-    filename: "electron.js",
+    filename: "index.js",
     chunkFormat: "module",
     libraryTarget: "commonjs-module",
     library: {
@@ -25,12 +25,14 @@ export default {
       {
         test: /\.(ts)$/,
         exclude: /node_modules/,
-        use: {
-          loader: "ts-loader",
-          options: {
-            configFile: "tsconfig.json",
+        use: [
+          {
+            loader: "ts-loader",
+            options: {
+              configFile: "tsconfig.json",
+            },
           },
-        },
+        ],
         exclude: /node_modules/,
       },
     ],

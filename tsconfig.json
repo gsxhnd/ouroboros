@@ -2,6 +2,7 @@
   "compilerOptions": {
     "target": "ES5",
     "lib": ["dom", "dom.iterable", "esnext"],
+    "outDir": "dist/main/",
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
@@ -16,5 +17,5 @@
     "noEmit": false,
     "jsx": "react-jsx"
   },
-  "include": ["app/main", "app/renderer"]
+  "include": ["app/main"]
 }

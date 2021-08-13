@@ -4,6 +4,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const baseConfig = require("./webpack.base.js");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
+const MonacoWebpackPlugin = require("monaco-editor-webpack-plugin");
 
 const entry = {
   index: path.join(__dirname, "../app/renderer/index.tsx"),
@@ -67,7 +68,7 @@ const proConfig = {
   },
   plugins: [miniCssExtractPlugin, ...htmlWebpackPlugin],
   optimization: {
-    minimizer: [new CssMinimizerPlugin()],
+    minimizer: [new CssMinimizerPlugin(), new MonacoWebpackPlugin()],
   },
 };
 
