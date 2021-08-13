@@ -1,5 +1,5 @@
 import os from "os";
-import { store } from "./store";
+import { store } from "./db/store";
 import { app } from "electron";
 
 function initConfig() {

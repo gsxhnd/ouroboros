@@ -1,5 +1,6 @@
 import { Low, JSONFile } from "lowdb";
 
+let libDB!: LibDB;
 type LibData = {
   posts: string[]; // Expect posts to be an array of strings
 };
@@ -16,4 +17,8 @@ class LibDB {
   }
 }
 
-export { LibDB };
+function OpenLibDB(file: string) {
+  libDB = new LibDB(file);
+}
+
+export { OpenLibDB, libDB };
