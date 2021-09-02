@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "main": "dist/main/index.js",
   "exports": "./dist/main/index.js",
+  "type": "module",
   "repository": "git@github.com:gsxhnd/ouroboros.git",
   "author": "gsxhnd <gsxhnd@gmail.com>",
   "license": "MIT",
