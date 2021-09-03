@@ -1,22 +1,15 @@
-import { app } from "electron";
-import path from "path";
-import { store } from "./db/store";
-import { get_window } from "./window";
-import { Low, JSONFile } from "lowdb";
+import electron from "../../node_modules/@electron/get/dist/esm";
+const { app } = electron;
 
-import "./ipc";
+import path from "path";
+
+import { get_window } from "./window.js";
+import "./ipc.js";
 
 function createWindow(): void {
-  let file = new JSONFile("./db.json");
-  let db = new Low(file);
-  db.read().then(() => {
-    console.log(db);
-  });
-
   let win = get_window();
   win.on("resized", () => {
     let size = win.getContentBounds();
-    store.set("win.size", size);
   });
   if (app.isPackaged) {
     win.loadFile(path.join(__dirname, "../renderer/index.html"));

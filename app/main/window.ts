@@ -1,5 +1,5 @@
 import { BrowserWindow } from "electron";
-import { store } from "./db/store";
+import { store } from "./db/store.js";
 
 function get_window(): BrowserWindow {
   let winSize: any;

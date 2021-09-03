@@ -4,14 +4,13 @@ import nodeExternals from "webpack-node-externals";
 
 export default {
   resolve: {
-    extensions: [".js", ".jsx", ".ts", ".tsx"],
+    extensions: [".ts", ".tsx"],
   },
   entry: resolve(dirname(""), "app/main/index.ts"),
   target: "electron-main",
   output: {
     filename: "index.js",
     chunkFormat: "module",
-    libraryTarget: "commonjs-module",
     library: {
       type: "module",
     },
