@@ -10,8 +10,8 @@
   "scripts": {
     "build:main": "tsc --build --clean && tsc --build --verbose",
     "start:electron": "electron .",
-    "start:render": "webpack serve --config ./webpack/webpack.render.dev.js",
-    "build:render": "webpack --config ./webpack/webpack.render.prod.js",
+    "start:render": "webpack serve --config ./webpack/webpack.dev.js",
+    "build:render": "webpack --config ./webpack/webpack.prod.js",
     "package:mac": "electron-builder build --mac",
     "package:win": "electron-builder build --win"
   },

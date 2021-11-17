@@ -1,12 +1,9 @@
-const path = require("path");
-const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+import CleanWebpackPlugin from "clean-webpack-plugin";
 
-module.exports = {
+const baseConfig = {
   resolve: {
     extensions: [".js", ".jsx", ".ts", ".tsx"],
-    alias: {
-      "@src": path.join(__dirname, "../", "app/renderer"),
-    },
+    alias: {},
   },
   module: {
     rules: [
@@ -16,7 +13,24 @@ module.exports = {
         use: {
           loader: "ts-loader",
         },
-        exclude: /node_modules/,
+      },
+      {
+        test: /\.less$/,
+        use: [
+          {
+            loader: "style-loader",
+          },
+          {
+            loader: "css-loader",
+          },
+          {
+            loader: "less-loader",
+          },
+        ],
+      },
+      {
+        test: /\.css$/,
+        use: ["style-loader", "css-loader"],
       },
       {
         test: /\.(jpg|png|jpeg|gif)$/,
@@ -32,5 +46,10 @@ module.exports = {
       },
     ],
   },
-  plugins: [new CleanWebpackPlugin()],
+  plugins: [new CleanWebpackPlugin.CleanWebpackPlugin()],
+  experiments: {
+    outputModule: true,
+  },
 };
+
+export default baseConfig;
