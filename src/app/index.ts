@@ -1,5 +1,4 @@
-import electron from "../../node_modules/@electron/get/dist/esm";
-const { app } = electron;
+import { app } from "electron";
 
 import path from "path";
 
